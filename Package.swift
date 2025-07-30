@@ -14,7 +14,7 @@ let package = Package(
             targets: ["AWStoreKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/RevenueCat/purchases-ios.git", from: "4.26.0")
+        .package(url: "https://github.com/RevenueCat/purchases-ios.git", from: "5.33.1")
     ],
     targets: [
         .target(
