@@ -1,6 +1,15 @@
 {
-  "originHash" : "23a38fcebc5bd1a2edf8ab74f2895167fabe868059410c2df7aa1892139a8f36",
+  "originHash" : "5020546c0176698e4907bd669edabcf64fc135945060fcf3a78f6ef5daa748a7",
   "pins" : [
+    {
+      "identity" : "awlogger",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:dahiri-farid/AWLogger.git",
+      "state" : {
+        "revision" : "cada1deb44be87c924c60e275f705db4f1039fcb",
+        "version" : "1.0.2"
+      }
+    },
     {
       "identity" : "purchases-ios",
       "kind" : "remoteSourceControl",
@@ -8,6 +17,15 @@
       "state" : {
         "revision" : "709554156bb93c909b362e0b30ec0f2afee3df6e",
         "version" : "5.33.1"
+      }
+    },
+    {
+      "identity" : "swiftybeaver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyBeaver/SwiftyBeaver.git",
+      "state" : {
+        "revision" : "8cba041db09596183331d123f337d0eb2e6e8e91",
+        "version" : "2.1.1"
       }
     }
   ],

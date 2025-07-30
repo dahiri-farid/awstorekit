@@ -14,13 +14,15 @@ let package = Package(
             targets: ["AWStoreKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/RevenueCat/purchases-ios.git", from: "5.33.1")
+        .package(url: "https://github.com/RevenueCat/purchases-ios.git", from: "5.33.1"),
+        .package(url: "git@github.com:dahiri-farid/AWLogger.git", from: "1.0.2"),
     ],
     targets: [
         .target(
             name: "AWStoreKit",
             dependencies: [
-                .product(name: "RevenueCat", package: "purchases-ios")
+                .product(name: "RevenueCat", package: "purchases-ios"),
+                .product(name: "AWLogger", package: "AWLogger"),
             ]
         )
     ]

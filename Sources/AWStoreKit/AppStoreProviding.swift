@@ -33,8 +33,8 @@ public enum SubscriptionStatus: Equatable {
 }
 
 public struct EFPurchaseTransaction {
-    let productIdentifier: String
-    let price: NSDecimalNumber
+    public let productIdentifier: String
+    public let price: NSDecimalNumber
     
     public init(productIdentifier: String, price: NSDecimalNumber) {
         self.productIdentifier = productIdentifier
