@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/RevenueCat/purchases-ios.git", from: "5.33.1"),
-        .package(url: "git@github.com:dahiri-farid/AWLogger.git", from: "1.0.2"),
+        .package(url: "git@github.com:dahiri-farid/AWLogger.git", branch: "main"),
     ],
     targets: [
         .target(

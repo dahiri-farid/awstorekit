@@ -1,13 +1,13 @@
 {
-  "originHash" : "5020546c0176698e4907bd669edabcf64fc135945060fcf3a78f6ef5daa748a7",
+  "originHash" : "f2371e6ac75c74c2712658766d2b1b41a8a89431fc747c73f6e48c59b9f2bd2d",
   "pins" : [
     {
       "identity" : "awlogger",
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:dahiri-farid/AWLogger.git",
       "state" : {
-        "revision" : "cada1deb44be87c924c60e275f705db4f1039fcb",
-        "version" : "1.0.2"
+        "branch" : "main",
+        "revision" : "33b256e0a1516b83a716e51b557b7429f10a4f33"
       }
     },
     {
