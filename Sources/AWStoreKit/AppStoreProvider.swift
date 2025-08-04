@@ -13,6 +13,10 @@ import StoreKit
 
 @MainActor
 public class AppStoreProvider: AppStoreProviding {
+    public var lastKnownSubscriptionStatus: SubscriptionStatus {
+        _subscriptionStatusPublisher.value
+    }
+    
     let logger: Logging
     
     public var subscriptionStatusPublisher: AnyPublisher<SubscriptionStatus, Never> {

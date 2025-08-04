@@ -15,6 +15,10 @@ import UIKit
 
 @MainActor
 final class RevenueCatAppStoreProvider: AppStoreProviding {
+    var lastKnownSubscriptionStatus: SubscriptionStatus {
+        _subscriptionStatusPublisher.value
+    }
+    
     let logger: Logging
     var subscriptionStatusPublisher: AnyPublisher<SubscriptionStatus, Never> {
         _subscriptionStatusPublisher.eraseToAnyPublisher()

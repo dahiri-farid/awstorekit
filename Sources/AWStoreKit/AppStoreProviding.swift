@@ -13,7 +13,7 @@ import Foundation
 @MainActor
 public protocol AppStoreProviding {
     var subscriptionStatusPublisher: AnyPublisher<SubscriptionStatus, Never> { get }
-    
+    var lastKnownSubscriptionStatus: SubscriptionStatus { get }
     func fetchProducts() async throws -> [EFProduct]
     func purchaseSubscription() async throws -> EFPurchaseTransaction?
     func showManageSubscriptions()

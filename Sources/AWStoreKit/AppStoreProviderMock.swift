@@ -11,6 +11,10 @@ import Combine
 import Foundation
 
 public class AppStoreProviderMock: AppStoreProviding {
+    public var lastKnownSubscriptionStatus: SubscriptionStatus {
+        _subscriptionStatusPublisher.value
+    }
+    
     
     let logger: Logging
     
