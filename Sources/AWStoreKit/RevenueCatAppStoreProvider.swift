@@ -16,7 +16,10 @@ import UIKit
 @MainActor
 final class RevenueCatAppStoreProvider: AppStoreProviding {
     let logger: Logging
-    let subscriptionStatusPublisher = CurrentValueSubject<SubscriptionStatus, Never>(.unknown)
+    var subscriptionStatusPublisher: AnyPublisher<SubscriptionStatus, Never> {
+        _subscriptionStatusPublisher.eraseToAnyPublisher()
+    }
+    private let _subscriptionStatusPublisher = CurrentValueSubject<SubscriptionStatus, Never>(.unknown)
     private var monitoringTask: Task<Void, Never>?
     
     private var products: [Package] = []
@@ -159,15 +162,15 @@ final class RevenueCatAppStoreProvider: AppStoreProviding {
         do {
             let customerInfo = try await Purchases.shared.customerInfo()
             if customerInfo.entitlements.active.isEmpty {
-                subscriptionStatusPublisher.send(.inactive)
+                _subscriptionStatusPublisher.send(.inactive)
             } else if let entitlement = customerInfo.entitlements.all.values.first,
                       let expiration = entitlement.expirationDate {
-                subscriptionStatusPublisher.send(.active(expiration))
+                _subscriptionStatusPublisher.send(.active(expiration))
             } else {
-                subscriptionStatusPublisher.send(.unknown)
+                _subscriptionStatusPublisher.send(.unknown)
             }
         } catch {
-            subscriptionStatusPublisher.send(.unknown)
+            _subscriptionStatusPublisher.send(.unknown)
         }
     }
 }

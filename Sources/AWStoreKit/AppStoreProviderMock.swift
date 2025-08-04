@@ -14,7 +14,10 @@ public class AppStoreProviderMock: AppStoreProviding {
     
     let logger: Logging
     
-    public var subscriptionStatusPublisher: CurrentValueSubject<SubscriptionStatus, Never> = .init(.active(Date()))
+    public var subscriptionStatusPublisher: AnyPublisher<SubscriptionStatus, Never> {
+        _subscriptionStatusPublisher.eraseToAnyPublisher()
+    }
+    private let _subscriptionStatusPublisher: CurrentValueSubject<SubscriptionStatus, Never> = .init(.active(Date()))
     
     init(logger: Logging) {
         self.logger = logger

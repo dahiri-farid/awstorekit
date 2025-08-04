@@ -15,7 +15,10 @@ import StoreKit
 public class AppStoreProvider: AppStoreProviding {
     let logger: Logging
     
-    public let subscriptionStatusPublisher: CurrentValueSubject<SubscriptionStatus, Never> = CurrentValueSubject(.inactive)
+    public var subscriptionStatusPublisher: AnyPublisher<SubscriptionStatus, Never> {
+        _subscriptionStatusPublisher.eraseToAnyPublisher()
+    }
+    private let _subscriptionStatusPublisher: CurrentValueSubject<SubscriptionStatus, Never>
     private var cancellables: Set<AnyCancellable> = []
     
     private let subscriptionProvider: SubscriptionProvider
@@ -25,9 +28,10 @@ public class AppStoreProvider: AppStoreProviding {
     init(logger: Logging) {
         self.logger = logger
         self.subscriptionProvider = SubscriptionProvider(logger: logger)
+        self._subscriptionStatusPublisher = CurrentValueSubject(.inactive)
         subscriptionProvider.subscriptionGroupStatusPublisher.sink { [unowned self] status in
             self.logger.info("subscription status changed \(String(describing: status))")
-            self.subscriptionStatusPublisher.send(self.convertStatus(status))
+            self._subscriptionStatusPublisher.send(self.convertStatus(status))
         }.store(in: &cancellables)
         
         task = monitorSubscriptionStatus()

@@ -12,7 +12,7 @@ import Foundation
 
 @MainActor
 public protocol AppStoreProviding {
-    var subscriptionStatusPublisher: CurrentValueSubject<SubscriptionStatus, Never> { get }
+    var subscriptionStatusPublisher: AnyPublisher<SubscriptionStatus, Never> { get }
     
     func fetchProducts() async throws -> [EFProduct]
     func purchaseSubscription() async throws -> EFPurchaseTransaction?
